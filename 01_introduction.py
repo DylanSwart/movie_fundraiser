@@ -10,3 +10,6 @@ if intro == "Yes":
 
 elif intro == "No":
     print(instructions)
+
+else:
+    print("That was not an option please try again")
