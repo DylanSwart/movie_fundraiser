@@ -1,15 +1,6 @@
 # Introduction and instructions
-print("Welcome to the movie fundraiser")
-# Ask if they have used this before
-intro = input("Have you used this program before? ")
-instructions = ("How To Use, \n"
-                "When asked a question please enter what it is asking")
-
-if intro == "Yes":
-    print("Ok welcome back")
-
-elif intro == "No":
-    print(instructions)
-
-else:
-    print("That was not an option please try again")
+# Component 1 introduction and instructions
+# introduction to the program
+print("Welcome to the movie fundraiser \n"
+      "Please follow what the program says. \n"
+      "there are limit seats of 150 seats available in the theater")
