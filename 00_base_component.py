@@ -1,7 +1,7 @@
 # Introduction and instructions
 
 
-# Function goes here
+# Not Blank Function goes here
 def not_blank(question, error_message):
     valid = False
 
@@ -19,11 +19,11 @@ name = not_blank("Name: ",
                  "Sorry this can't be blank," 
                  "please enter your name")
 
-# Start Loop
 name = ""
 count = 0
 MAX_TICKETS = 5
 
+# Start of Loop
 while name != "xxx" and count <= MAX_TICKETS:
     print("You have {} seats "
           "left".format(MAX_TICKETS - count))
