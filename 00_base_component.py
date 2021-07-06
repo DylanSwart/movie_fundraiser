@@ -2,6 +2,19 @@
 
 # Functions go here
 
+# Not blank function
+
+def not_blank(question, error_message):
+    valid = False
+
+    while not valid:
+        response = input(question)
+
+        if response != "":
+            return response
+        else:
+            print(error_message)
+
 # Main routine goes here
 
 # Set up dictionaries / lists needed for data
@@ -11,6 +24,10 @@
 # Loop ticket information
 
     # Get name can't be blank
+
+    name = not_blank("Name: ",
+                     "Sorry this can't be blank," 
+                     "please enter your name")
 
     # Get age have to be between 12 and 130
 
