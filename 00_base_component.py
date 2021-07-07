@@ -30,11 +30,11 @@ def int_check(question, low_num, high_num):
         try:
             response = int(input(question))
 
-            if low_num <= response <= high_num:
-                return response
+            if response <= 0:
+                print(error)
 
             else:
-                print(error)
+                return response
 
         # If a integer is not entered display a error message
         except ValueError:
@@ -89,7 +89,7 @@ if count == MAX_TICKETS:
 
 else:
     print("You have sold {} tickets. \n "
-          "There is {} seats still availavle".format(count, MAX_TICKETS - count))
+          "There is {} seats still available".format(count, MAX_TICKETS - count))
 
     # calculate ticket price
 
