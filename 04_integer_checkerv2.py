@@ -1,10 +1,10 @@
 # Component 3 integer check Version 2
 
 # Function Goes here
-def int_check(question, low_num, high_num):
+def int_check(question):
 
-    error = "Please enter a whole number between {} " \
-            "and {}".format(low_num, high_num)
+    error = "Please enter a whole number between 12 " \
+            "and 130"
 
     valid = False
     while not valid:
@@ -25,4 +25,4 @@ def int_check(question, low_num, high_num):
 
 
 # Main Routine goes here
-age = int_check("Age: ", 12, 130)
+age = int_check("Age: ")
