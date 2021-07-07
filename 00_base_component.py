@@ -112,5 +112,3 @@ else:
 # Calculate total sales and profit
 
 # Out put data to text file
-
-
