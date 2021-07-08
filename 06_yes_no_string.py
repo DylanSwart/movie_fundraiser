@@ -19,7 +19,7 @@ def yes_no(question):
 # Main Routine goes here
 
 
-for item in range(0,6):
+for item in range(0, 6):
     want_snacks = yes_no("Do you want snacks: ")
     print("Answer OK, you said: {}".format(want_snacks))
     print()
