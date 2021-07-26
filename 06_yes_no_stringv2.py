@@ -1,4 +1,4 @@
-# Component 4 Yes No String
+# Component 5 Yes No String
 def string_checker(question, to_check):
 
     error = "Please enter Yes or No"

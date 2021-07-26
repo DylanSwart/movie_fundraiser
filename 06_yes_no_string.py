@@ -1,4 +1,4 @@
-# Component 4 Yes No String
+# Component 5 Yes No String
 def yes_no(question):
 
     error = "Please enter Yes or No"
