@@ -4,32 +4,39 @@
 
 valid_snacks = [
     ["popcorn", "p", "corn", "a"],
-    ["M&Ms", "m&ms", "mms", "m", "b"],
+    ["M&Ms", "m&ms", "m", "mms", "b"],
     ["pita chips", "chips", "pc", "pita", "c"],
     ["water", "w", "d"]
 ]
 
 
-# Initialised variables
-snacks_ok = ""
+# Initialise variables
+snack_ok = ""
 snack = ""
 
-# Loop three times
+# Loop program three times
 for item in range(0, 3):
 
-    # Ask user for wanted snacks
-    desired_snacks = input("Snacks: ").lower()
+    # Ask used for desired snack
+    desired_snack = input("Snack: ").lower()
 
     for var_list in valid_snacks:
 
-        # If snacks is in the list return full response
-        if desired_snacks in var_list:
+        # If chosen snack is in valid snacks return full response
+        if desired_snack in var_list:
 
-            # Get full name of snack in title case
+            # Get full name of snack and put it in title case
             snack = var_list[0].title()
-            snacks_ok = "yes"
+            snack_ok = "yes"
             break
 
-        # If chosen snack is not valid
+        # If chosen snack is not in valid snack set snack ok to no
         else:
             snack_ok = "no"
+
+    # If the snack is not ok ask question again
+    if snack_ok == "yes":
+        print("Snack choice: ", snack)
+
+    else:
+        print("Invalid choice")
