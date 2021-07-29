@@ -71,7 +71,7 @@ if check_snack == "yes":
 
 # Show snack order
 print()
-if len(snack_choice) == 0:
+if len(snack_order) == 0:
     print("Snacks order: None")
 
 else:
