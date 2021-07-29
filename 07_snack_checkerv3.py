@@ -5,6 +5,9 @@ def string_check(choice, options):
 
     for var_list in options:
 
+        is_valid = ""
+        chosen = ""
+
         # If the snack is in the list return full response
         if choice in var_list:
 
@@ -22,7 +25,7 @@ def string_check(choice, options):
         return chosen
 
     else:
-        return "invalid choice"
+        return "Invalid choice"
 
 
 # Snack List goes here
@@ -49,7 +52,7 @@ while check_snack == "Invalid choice":
     check_snack = string_check(want_snack, yes_no)
 
 # If user input is yes ask what snacks they want
-if check_snack == "yes":
+if check_snack == "Yes":
 
     desired_snack = ""
     while desired_snack != "xxx":
