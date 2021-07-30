@@ -5,6 +5,9 @@ def string_check(choice, options):
 
     for var_list in options:
 
+        is_valid = ""
+        chosen = ""
+
         # If the snack is in the list return full response
         if choice in var_list:
 
