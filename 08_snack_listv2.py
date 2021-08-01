@@ -1,3 +1,6 @@
+# Component 7v2 snack lists
+
+# Import pandas
 import pandas
 
 # initialise snack lists
