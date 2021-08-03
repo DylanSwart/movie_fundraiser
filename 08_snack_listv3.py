@@ -20,8 +20,8 @@ movie_data_dict = {
     'Tickets': all_tickets,
     'Popcorn': popcorn,
     'Water': water,
-    'M&Ms': mms,
     'Pita Chips': pita_chips,
+    'M&Ms': mms,
     'Orange Juice': orange_juice
 }
 
@@ -35,11 +35,11 @@ price_dict = {
 }
 
 test_data = [
-    [[1, 'Water'], [1, 'Pita Chips'], [1, 'M&Ms']],
-    [[]],
-    [[1, 'Pita Chips'], [1, 'Orange Juice'], [2, 'M&Ms']],
-    [[1, 'Water']],
-    [[1, 'Popcorn']]
+[[1, 'Water'], [1, 'Pita Chips'], [1, 'M&Ms']],
+[[]],
+[[1, 'Pita Chips'], [1, 'Orange Juice'], [2, 'M&Ms']],
+[[1, 'Water'], [1, 'Popcorn']],
+[[1, 'M&Ms'], [1, 'Pita Chips']]
 ]
 
 count = 0
@@ -73,11 +73,10 @@ movie_frame = movie_frame.set_index('Name')
 
 movie_frame["Sub Total"] = \
     movie_frame['Ticket'] + \
-    movie_frame['Popcorn']*price_dict['Popcorn'] + \
-    movie_frame['Water']*price_dict['Water'] + \
-    movie_frame['Pita Chips']*price_dict['Pita Chips'] + \
-    movie_frame['M&Ms']*price_dict['M&Ms'] + \
-    movie_frame['Orange Juice']*price_dict['Orange Juice']
+    movie_frame['Popcorn'] * price_dict['Popcorn'] + \
+    movie_frame['Water'] * price_dict['Water'] + \
+    movie_frame['Pita Chips'] * price_dict['Pita Chips'] + \
+    movie_frame['M&Ms'] * price_dict['M&Ms'] + \
+    movie_frame['Orange Juice'] * price_dict['Orange Juice']
 
 print(movie_frame)
-
