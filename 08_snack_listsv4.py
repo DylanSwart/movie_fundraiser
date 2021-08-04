@@ -1,6 +1,7 @@
+# Component 7v4 snack/ticket lists
 import pandas
 
-# Initalise snack lists
+# initialise snack lists
 
 all_names = [ 'Dylan', 'Bob', 'Jill', 'Jane', 'Bill']
 all_tickets = [7.5, 10.5, 10.5, 10.5, 6.5 ]
@@ -13,7 +14,7 @@ orange_juice = []
 
 snack_lists = [popcorn, mms, pita_chips, water, orange_juice]
 
-# dictionaries
+# Data frames dictionary
 movie_data_dict = {
     'Name': all_names,
     'Ticket': all_tickets,
@@ -44,25 +45,30 @@ test_data = [
 count = 0
 for client_order in test_data:
 
-    # assume nsakc purchased
+    # Assume No snacks have been bought
     for item in snack_lists:
         item.append(0)
 
-    # print (snack_list)
+    # Print snack list
+
+    # Get order hard coded for testing
     snack_order = test_data[count]
     count += 1
 
     for item in snack_order:
-        if len(item)  > 0:
+        if len(item) > 0:
             to_find = (item[1])
             amount = (item[0])
             add_list = movie_data_dict[to_find]
             add_list[-1] = amount
 
 print()
+# Print details
 movie_frame = pandas.DataFrame(movie_data_dict)
 movie_frame = movie_frame.set_index('Name')
 
+# Create column called Sub Total
+# Fill it with price of tickets and snacks
 movie_frame["Sub Total"] = \
     movie_frame['Ticket'] + \
     movie_frame['Popcorn'] * price_dict['Popcorn'] + \
