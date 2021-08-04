@@ -3,7 +3,7 @@ import pandas
 
 # initialise snack lists
 
-all_names = [ 'Dylan', 'Bob', 'Jill', 'Jane', 'Bill']
+all_names = ['Dylan', 'Bob', 'Jill', 'Jane', 'Bill']
 all_tickets = [7.5, 10.5, 10.5, 10.5, 6.5 ]
 
 popcorn = []
@@ -35,11 +35,11 @@ price_dict = {
 }
 
 test_data = [
-[[2, 'Popcorn'], [1, 'Pita Chips'], [1, 'Orange Juice']],
-[[]],
-[[1, 'Water']],
-[[1, 'Popcorn'], [1, 'Orange Juice']],
-[[1, "M&Ms"], [1, 'Pita Chips'], [3, 'Orange Juice']],
+    [[2, 'Popcorn'], [1, 'Pita Chips'], [1, 'Orange Juice']],
+    [[]],
+    [[1, 'Water']],
+    [[1, 'Popcorn'], [1, 'Orange Juice']],
+    [[1, "M&Ms"], [1, 'Pita Chips'], [3, 'Orange Juice']],
 ]
 
 count = 0
