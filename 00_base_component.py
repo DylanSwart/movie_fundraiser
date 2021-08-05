@@ -73,6 +73,18 @@ def string_check(choice, options):
 
 # Set up dictionaries / lists needed for data
 
+yes_no = [
+    ["yes", "y"],
+    ["no", "n"]
+]
+
+valid_snacks = [
+    ["popcorn", "p", "corn", "a"],
+    ["M&Ms", "m&ms", "m", "mms", "b"],
+    ["pita chips", "chips", "pc", "pita", "c"],
+    ["water", "w", "d"]
+]
+
 # ask user if they have used this program before
 
 # Loop ticket information
