@@ -73,6 +73,7 @@ def string_check(choice, options):
 
 # Set up dictionaries / lists needed for data
 
+
 yes_no = [
     ["yes", "y"],
     ["no", "n"]
