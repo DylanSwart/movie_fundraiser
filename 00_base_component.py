@@ -184,12 +184,6 @@ while name != "xxx" and ticket_count <= MAX_TICKETS:
         ["water", "w", "d"]
     ]
 
-    # Yes/No list here
-    yes_no = [
-        ["yes", "y"],
-        ["no", "n"]
-    ]
-
     # Holds snack order for one person
     snack_order = []
 
