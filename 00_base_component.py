@@ -45,10 +45,10 @@ def int_check(question):
 
 def string_check(choice, options):
 
-    for var_list in options:
+    is_valid = ""
+    chosen = ""
 
-        is_valid = ""
-        chosen = ""
+    for var_list in options:
 
         # If the snack is in the list return full response
         if choice in var_list:
@@ -79,11 +79,10 @@ yes_no = [
     ["no", "n"]
 ]
 
-valid_snacks = [
-    ["popcorn", "p", "corn", "a"],
-    ["M&Ms", "m&ms", "m", "mms", "b"],
-    ["pita chips", "chips", "pc", "pita", "c"],
-    ["water", "w", "d"]
+# List of payment options
+payment = [
+    ["cash", "ca"],
+    ["credit", "cr"]
 ]
 
 # ask user if they have used this program before
@@ -199,6 +198,19 @@ while name != "xxx" and ticket_count <= MAX_TICKETS:
 
         for item in snack_order:
             print(item)
+
+            # Get payment method and work out surcharge if needed
+            # Ask for payment method
+            how_pay = "Invalid choice"
+            while how_pay == "Invalid choice":
+                how_pay = input("Please choose a payment option (Cash) or (Credit)").lower()
+                how_pay = string_check(how_pay, payment)
+
+            if how_pay == "Credit":
+                surcharge_multiplier = 0.05
+
+            else:
+                surcharge_multiplier = 0
 
 # Calculate ticket profit
 ticket_profit = ticket_sales - (5 * ticket_count)
