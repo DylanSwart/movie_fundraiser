@@ -1,5 +1,6 @@
 # Import statements
 import pandas
+import re
 
 # Functions go here
 
@@ -71,6 +72,107 @@ def string_check(choice, options):
     else:
         return "Invalid choice"
 
+
+# Get snack function
+def get_snack():
+
+    # Regular expressions
+    number_regex = "^[1-9]"
+
+    # Snack list
+    valid_snacks = [
+        ["popcorn", "p", "corn", "a"],
+        ["M&Ms", "m&ms", "m", "mms", "b"],
+        ["pita chips", "chips", "pc", "pita", "c"],
+        ["water", "w", "d"],
+        ["orange juice", "oj", "c"]
+    ]
+
+    # Holds snack order for one person
+    snack_order = []
+
+    desired_snack = ""
+    while desired_snack != "xxx":
+
+        snack_row = []
+
+        # Ask user for desired snack
+        desired_snack = input("Snack: ").lower()
+
+        if desired_snack == "xxx":
+            return snack_order
+
+        # If item has a number separate it into two
+        if re.match(number_regex, desired_snack):
+            amount = int(desired_snack[0])
+            desired_snack = desired_snack[1:]
+
+        else:
+            amount = 1
+            desired_snack = desired_snack
+
+        # Remove white space around snack
+        desired_snack = desired_snack.strip()
+
+        # Check if snack is valid
+        snack_choice = string_check(desired_snack, valid_snacks)
+
+        # Check snack amount is less than 5
+        if amount >= 5:
+            print("Sorry we have a max of 4 snacks")
+            snack_choice = "Invalid choice"
+
+        # Add snack and amount to the list
+
+        snack_row.append(amount)
+        snack_row.append(snack_choice)
+
+        # Check that snack is not exit code
+        if snack_choice != "xxx" and snack_choice != "Invalid choice":
+            snack_order.append(snack_row)
+
+
+# Ticket function
+def check_tickets(tickets_sold, ticket_limit):
+
+    # Tell user how many seats are left
+    if tickets_sold < ticket_limit - 1:
+        print("You have {} seats "
+              "left".format(ticket_limit - tickets_sold))
+
+    # Warn user if there is one seat left
+    else:
+        print("There is one seat left")
+
+    return ""
+
+
+# Profit function
+def get_ticket_price():
+
+    # Get age
+    age = int_check("age: ")
+
+    # Check if the age is valid
+    if age < 12:
+        print("Sorry you are too young for this movie")
+        return "invalid ticket price"
+
+    elif age > 130:
+        print("That is very old it looks like a mistake")
+        return "invalid ticket price"
+
+    if age < 16:
+        ticket_price = 7.5
+
+    elif age < 65:
+        ticket_price = 10.5
+
+    else:
+        ticket_price = 6.5
+
+    return ticket_price
+
 # Main routine goes here
 
 # Set up dictionaries / lists needed for data
@@ -131,14 +233,8 @@ price_dict = {
 
 while name != "xxx" and ticket_count <= MAX_TICKETS:
 
-    # Tells user how many seats are left
-    if ticket_count < MAX_TICKETS - 1:
-        print("You have {} seats "
-              "left".format(MAX_TICKETS - ticket_count))
-
-    # Warns user that there is one seat left
-    else:
-        print("There is ONE seat left")
+    # Check number of tickets limit
+    check_tickets(ticket_count, MAX_TICKETS)
 
     # Get details
 
@@ -152,42 +248,21 @@ while name != "xxx" and ticket_count <= MAX_TICKETS:
     if name == "xxx":
         break
 
-    # Gets user age between 12 and 130
-    age = int_check("Age: ")
+    # Get ticket price based on age
+    ticket_price = get_ticket_price()
 
-    # Checks if age is valid
-    if age < 12:
-        print("Sorry you are to young to view this movie")
+    # If age is invalid restart loop
+    if ticket_price == "invalid ticket price":
         continue
-
-    elif age > 130:
-        print("That is very old it looks like a mistake")
-        continue
-
-    if age < 16:
-        ticket_price = 7.5
-
-    elif age < 65:
-        ticket_price = 10.5
-
-    else:
-        ticket_price = 6.5
-
-    print("{} : ${:.2f}".format(name, ticket_price))
 
     ticket_count += 1
     ticket_sales += ticket_price
 
-    # Snack List goes here
-    valid_snacks = [
-        ["popcorn", "p", "corn", "a"],
-        ["M&Ms", "m&ms", "m", "mms", "b"],
-        ["pita chips", "chips", "pc", "pita", "c"],
-        ["water", "w", "d"]
-    ]
+    # Add name and ticket price to the list
+    all_names.append(name)
+    all_tickets.append(ticket_price)
 
-    # Holds snack order for one person
-    snack_order = []
+    # Get snack
 
     # Ask user if they want snacks
     check_snack = "Invalid choice"
