@@ -37,7 +37,8 @@ valid_snacks = [
     ["popcorn", "p", "corn", "a"],
     ["M&Ms", "m&ms", "m", "mms", "b"],
     ["pita chips", "chips", "pc", "pita", "c"],
-    ["water", "w", "d"]
+    ["water", "w", "d"],
+    ["orange juice", "oj", "c"]
 ]
 
 # Yes_no list
