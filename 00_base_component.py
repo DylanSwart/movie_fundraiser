@@ -5,11 +5,9 @@ import re
 # Functions go here
 
 # Not blank function
-
-
 def not_blank(question, error_message):
-    valid = False
 
+    valid = False
     while not valid:
         response = input(question)
 
@@ -18,13 +16,11 @@ def not_blank(question, error_message):
         else:
             print(error_message)
 
+
 # integer checker function
-
-
 def int_check(question):
 
-    error = "Please enter a whole number between 12 " \
-            "and 130"
+    error = "Please enter a whole number between 12 and 130"
 
     valid = False
     while not valid:
@@ -120,7 +116,7 @@ def get_snack():
         # Check snack amount is less than 5
         if amount >= 5:
             print("Sorry we have a max of 4 snacks")
-            snack_choice = "Invalid choice"
+            snack_choice = "invalid choice"
 
         # Add snack and amount to the list
 
@@ -128,7 +124,7 @@ def get_snack():
         snack_row.append(snack_choice)
 
         # Check that snack is not exit code
-        if snack_choice != "xxx" and snack_choice != "Invalid choice":
+        if snack_choice != "xxx" and snack_choice != "invalid choice":
             snack_order.append(snack_row)
 
 
@@ -266,8 +262,8 @@ while name != "xxx" and ticket_count <= MAX_TICKETS:
     # Get snack
 
     # Ask user if they want snacks
-    check_snack = "Invalid choice"
-    while check_snack == "Invalid choice":
+    check_snack = "invalid choice"
+    while check_snack == "invalid choice":
         want_snack = input("Do you want snacks?: ").lower().strip()
         check_snack = string_check(want_snack, yes_no)
 
@@ -291,8 +287,8 @@ while name != "xxx" and ticket_count <= MAX_TICKETS:
 
         # Get payment method and work out surcharge if needed
         # Ask for payment method
-        how_pay = "Invalid choice"
-        while how_pay == "Invalid choice":
+        how_pay = "invalid choice"
+        while how_pay == "invalid choice":
             how_pay = input("Please choose a payment option (cash) or (credit)").lower()
             how_pay = string_check(how_pay, payment)
 
@@ -325,6 +321,7 @@ movie_frame["Sub Total"] = \
 movie_frame["Surcharge"] = movie_frame["Sub Total"] * movie_frame["Surcharge_Multiplier"]
 
 movie_frame["Total"] = movie_frame["Sub Total"] + movie_frame['Surcharge']
+
 
 # Shorten snack names
 movie_frame = movie_frame.rename(columns={'Orange Juice': 'OJ',
