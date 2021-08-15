@@ -1,6 +1,6 @@
 # Import statements
-import pandas
 import re
+import pandas
 
 # Functions go here
 
@@ -210,6 +210,10 @@ orange_juice = []
 
 snack_lists = [popcorn, mms, pita_chips, water, orange_juice]
 
+
+# Store surcharge multiplier
+surcharge_mult_list = []
+
 # Data Frame dict
 movie_data_dict = {
     'Name': all_names,
@@ -218,7 +222,8 @@ movie_data_dict = {
     'Water': water,
     'Pita Chips': pita_chips,
     'M&Ms': mms,
-    'Orange Juice': orange_juice
+    'Orange Juice': orange_juice,
+    'Surcharge_Multiplier': surcharge_mult_list
 }
 
 # Cost of each snack
@@ -288,22 +293,25 @@ while name != "xxx" and ticket_count <= MAX_TICKETS:
             add_list = movie_data_dict[to_find]
             add_list[-1] = amount
 
-            # Get payment method and work out surcharge if needed
-            # Ask for payment method
-            how_pay = "Invalid choice"
-            while how_pay == "Invalid choice":
-                how_pay = input("Please choose a payment option (Cash) or (Credit)").lower()
-                how_pay = string_check(how_pay, payment)
+        # Get payment method and work out surcharge if needed
+        # Ask for payment method
+        how_pay = "Invalid choice"
+        while how_pay == "Invalid choice":
+            how_pay = input("Please choose a payment option (Cash) or (Credit)").lower()
+            how_pay = string_check(how_pay, payment)
 
-            if how_pay == "Credit":
-                surcharge_multiplier = 0.05
+        if how_pay == "Credit":
+            surcharge_multiplier = 0.05
 
-            else:
-                surcharge_multiplier = 0
+        else:
+            surcharge_multiplier = 0
+
+        surcharge_mult_list.append(surcharge_multiplier)
 
 # End of tickets/ snacks/ name loop
 
 # Print details
+print()
 movie_frame = pandas.DataFrame(movie_data_dict)
 movie_frame = movie_frame.set_index('Name')
 
@@ -318,11 +326,28 @@ movie_frame["Sub Total"] = \
     movie_frame['M&Ms'] * price_dict['M&Ms'] + \
     movie_frame['Orange Juice'] * price_dict['Orange Juice']
 
+movie_frame["Surcharge"] = movie_frame["Sub Total"] * movie_frame["Surcharge_Multiplier"]
+
+movie_frame["Total"] = movie_frame["Sub Total"] = movie_frame['Surcharge']
+
 # Shorten snack names
 movie_frame = movie_frame.rename(columns={'Orange Juice': 'OJ',
-                                          'Pita Chips': 'Chips'})
+                                          'Pita Chips': 'Chips',
+                                          'Surcharge_multiplier': 'SM'})
 
-print(movie_frame)
+pandas.set_option('display.max_columns', None)
+
+pandas.set_option('precision', 2)
+
+print_all = input("Print all columns (y) for yes or (n) for no: ")
+if print_all == "y":
+    print(movie_frame)
+
+else:
+    print(movie_frame[['Ticket', 'Sub Total',
+                      'Surcharge', 'Total']])
+
+print()
 
 # Calculate ticket profit
 ticket_profit = ticket_sales - (5 * ticket_count)
