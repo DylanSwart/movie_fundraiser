@@ -363,14 +363,6 @@ else:
     print("You have sold {} tickets. \n "
           "There is {} seats still available".format(ticket_count, MAX_TICKETS - ticket_count))
 
-    # calculate ticket price
-
-    # Loop to ask user for snacks
-
-    # Calculate snacks price
-
-    # ask user for payment method and apply surcharge if needed
-
 # Calculate total sales and profit
 
 # Out put data to text file

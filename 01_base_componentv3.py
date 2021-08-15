@@ -1,4 +1,5 @@
 # import statements
+
 import re
 import pandas
 
@@ -279,7 +280,7 @@ while name != "xxx" and ticket_count < MAX_TICKETS:
     # Ask for payment method
     how_pay = "Invalid choice"
     while how_pay == "Invalid choice":
-        how_pay = input("Please choose a payment method of cash or credit ").lower()
+        how_pay = input("Please choose a payment method of Cash or Credit ").lower()
         how_pay = string_check(how_pay, pay_method)
 
     # calculate surcharge
@@ -324,7 +325,8 @@ print_all = input("Print all columns? enter (y) for yes or (n) for no: ")
 if print_all == "y":
     print(movie_frame)
 else:
-    print(movie_frame[['Ticket', 'Sub Total', 'Surcharge', 'Total']])
+    print(movie_frame[['Ticket', 'Sub Total',
+                       'Surcharge', 'Total']])
 
 print()
 
