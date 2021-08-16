@@ -31,7 +31,7 @@ def int_check(question):
         try:
             response = int(input(question))
 
-            if response <=0:
+            if response <= 0:
                 print(error)
             else:
                 return response
@@ -58,7 +58,7 @@ def get_ticket_price():
     age = int_check("Age: ")
 
     # Check age of person
-    if age <12:
+    if age < 12:
         print("Sorry you are too young for this movie")
         return "invalid ticket price"
     elif age > 130:
@@ -110,16 +110,16 @@ def string_check(choice, options):
 def get_snack():
 
     # Regular expression to find if item starts with number
-    number_regex ="^[1-9]"
+    number_regex = "^[1-9]"
 
     # Valid snacks holds list of all snacks
     # Each item in valid snacks with valid options for each snack, incl abbreviations
     valid_snacks = [
         ["popcorn", "p", "corn", "a"],
-        ["M&Ms", "m&ms", "mms", "m","mm", "MM", "b"],
+        ["M&Ms", "m&ms", "mms", "m", "mm", "MM", "b"],
         ["pita chips", "chips", "pc", "pita", "c"],
-        ["water","w", "d"],
-        ["Orange Juice", "orange juice", "OJ", "oj","e"]
+        ["water", "w", "d"],
+        ["Orange Juice", "orange juice", "OJ", "oj", "e"]
     ]
 
     # Holds snack order for a single user
@@ -135,13 +135,13 @@ def get_snack():
         if desired_snack == "xxx":
             return snack_order
 
-        # If item has number seperate into two (number/string)
+        # If item has number separate into two (number/string)
         if re.match(number_regex, desired_snack):
             amount = int(desired_snack[0])
             desired_snack = desired_snack[1:]
         else:
             amount = 1
-            desired_snack=desired_snack
+            desired_snack = desired_snack
 
         # Remove white space
         desired_snack = desired_snack.strip()
@@ -251,7 +251,7 @@ while name != "xxx" and ticket_count < MAX_TICKETS:
     if ticket_price == "invalid ticket price":
         continue
 
-    ticket_count +=1
+    ticket_count += 1
     ticket_sales += ticket_price
 
     # Add names and ticket price to lists
