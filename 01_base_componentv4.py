@@ -332,6 +332,32 @@ movie_frame = movie_frame.rename(columns={'Orange Juice': 'OJ',
                                           'Pita chips': 'Chips',
                                           "Surcharge_Multiplier": 'SM'})
 
+# Set up summary dataframe
+# Populate snack items
+
+for item in snack_lists:
+
+    # Sum items of each snack list
+
+    summary_data.append(sum(item))
+
+# Get snack profit
+# Snack total from pandas
+
+snack_total = movie_frame['Snacks'].sum()
+snack_profit = snack_total * 0.2
+summary_data.append(snack_profit)
+
+# Get ticket profit and add to list
+
+ticket_profit = ticket_sales - (5 * ticket_count)
+summary_data.append(ticket_profit)
+
+# Work out total profit and add to list
+
+total_profit = snack_profit + ticket_profit
+summary_data.append(total_profit)
+
 # Set columns to be printed
 
 pandas.set_option('display.max_columns', None)
