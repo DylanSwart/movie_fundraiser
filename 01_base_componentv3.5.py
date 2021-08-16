@@ -192,7 +192,8 @@ snack_lists = [popcorn, mms, pita_chips, water, orange_juice]
 # list for valid yes/no response
 
 yes_no = [
-    ["yes","y"],["no","n"]
+    ["yes", "y"],
+    ["no",  "n"]
 ]
 
 # List valid response for payment
@@ -325,7 +326,7 @@ pandas.set_option('display.max_columns', None)
 
 pandas.set_option('precision', 2)
 
-print_all = input("Print all columns? enter y for yes or n for no")
+print_all = input("Print all columns? enter y for yes or n for no: ")
 if print_all == "y":
     print(movie_frame)
 else:
