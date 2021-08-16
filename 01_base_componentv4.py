@@ -207,6 +207,13 @@ pay_method = [
 
 surcharge_multi_list = []
 
+# List to store summary data
+summary_headings = ["Popcorn", "M&Ms", "Pita Chips", "Water",
+                    "Orange Juice", "Snack Profit", "Ticket Profit",
+                    "Total Profit"]
+
+summary_data = []
+
 # Data frame dictionary
 movie_data_dict = {
     'Name': all_names,
@@ -217,6 +224,12 @@ movie_data_dict = {
     'M&Ms': mms,
     'Orange Juice': orange_juice,
     'Surcharge_Multiplier': surcharge_multi_list
+}
+
+# Summary Dictionary
+summary_data_dict = {
+    'Item': summary_data,
+    'Amount': summary_data
 }
 
 # Price for snacks dictionary
@@ -310,14 +323,36 @@ movie_frame["Sub Total"] = \
     movie_frame['M&Ms'] * price_dict['M&Ms'] + \
     movie_frame['Orange Juice'] * price_dict['Orange Juice']
 
+movie_frame["Sub Total"] = \
+    movie_frame['Tickets'] + \
+    movie_frame['Snacks']
+
 movie_frame['Surcharge'] = \
     movie_frame["Sub Total"] * movie_frame["Surcharge_Multiplier"]
 
 movie_frame["Total"] = \
     movie_frame["Sub Total"] + movie_frame['Surcharge']
 
+# Shortened column names
 movie_frame = movie_frame.rename(columns={'Orange Juice': 'OJ', 'Pita chips': 'Chips',
                                           "Surcharge_Multiplier": 'SM'})
+
+# Summary dataframe
+for item in snack_lists:
+    # Sum items in each snack list
+    summary_data.append(sum(item))
+
+# Get snack profit
+snack_total = movie_frame['Snacks'].sum()
+snack_profit = snack_total * 0.2
+summary_data.append(snack_profit)
+
+# Ticket profit
+ticket_profit = ticket_sales - (5 * ticket_count)
+summary_data.append(ticket_profit)
+
+# Total profit
+total_profit = snack_profit + ticket_profit
 
 # set columns to be printed
 
