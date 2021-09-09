@@ -1,11 +1,11 @@
-# import statements
+# Import statements
 import re
 import pandas
 
 
-# functions go here
+# Functions go here
 
-# checks ticket name is not blank function
+# Checks ticket name is not blank function
 def not_blank(question):
     valid = False
 
@@ -21,7 +21,7 @@ def not_blank(question):
             print("This can't be blank please enter a name")
 
 
-# number check function
+# Number check function
 def int_check(question):
     error = "Please enter a whole number between 12 and 130 "
 
@@ -40,7 +40,7 @@ def int_check(question):
             print(error)
 
 
-# checks ticket function and warns user if max tickets being approached
+# Checks ticket function and warns user if max tickets being approached
 def check_tickets(tickets_sold, ticket_limit):
 
     if tickets_sold < ticket_limit - 1:
@@ -52,7 +52,7 @@ def check_tickets(tickets_sold, ticket_limit):
     return ""
 
 
-# get ticket price function
+# Get ticket price function
 def get_ticket_price():
     # Get age (between 12 and 130)
     age = int_check("Age: ")
@@ -76,7 +76,7 @@ def get_ticket_price():
     return ticket_price
 
 
-# string checker function
+# String checker function
 def string_check(choice, options):
 
     is_valid = ""
@@ -104,7 +104,7 @@ def string_check(choice, options):
         return "Invalid choice"
 
 
-# get snacks function
+# Get snacks function
 def get_snack():
 
     # regular expression to find if item starts with number
@@ -190,14 +190,14 @@ def instructions(options):
 # Set up dictionaries and lists to hold data.
 
 
-# initialise variables
+# Initialise variables
 MAX_TICKETS = 5
 
 name = ""
 ticket_count = 0
 ticket_sales = 0
 
-# initialise lists
+# Initialise lists
 all_names = []
 all_tickets = []
 popcorn = []
@@ -208,7 +208,7 @@ orange_juice = []
 
 snack_lists = [popcorn, mms, pita_chips, water, orange_juice]
 
-# list for valid yes/no response
+# List for valid yes/no response
 yes_no = [
     ["yes", "y"],
     ["no", "n"]
@@ -418,8 +418,3 @@ if ticket_count == MAX_TICKETS:
 else:
     print("You have sold {} tickets. \n"
           "There are {} tickets available.".format(ticket_count, MAX_TICKETS-ticket_count))
-
-
-# Calculate total sales & profit
-
-# Output data to text file
