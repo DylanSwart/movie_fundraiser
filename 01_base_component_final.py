@@ -55,7 +55,7 @@ def check_tickets(tickets_sold, ticket_limit):
 # Get ticket price function
 def get_ticket_price():
     # Get age (between 12 and 130)
-    age = int_check("Age: ")
+    age = int_check("What is your age?: ")
 
     # check age of person
     if age < 12:
@@ -100,7 +100,7 @@ def string_check(choice, options):
 
     else:
         print("Please enter a valid option")
-        print()
+        print("--------------------------")
         return "Invalid choice"
 
 
@@ -124,13 +124,13 @@ def get_snack():
     snack_order = []
 
     desired_snack = ""
-    while desired_snack != "xxx" or desired_snack != "n":
+    while desired_snack != "quit" or desired_snack != "n":
 
         snack_row = []
 
         # ask for snack convert to lowercase
-        desired_snack = input("Snack: ").lower()
-        if desired_snack == "xxx":
+        desired_snack = input("What snack do you want?: ").lower()
+        if desired_snack == "quit":
             return snack_order
 
         # If item has number separate into two (number/string)
@@ -169,18 +169,20 @@ def currency(x):
 # Instructions function
 def instructions(options):
 
-    show_help = "invalid choice"
-    while show_help == "invalid choice":
+    show_help = "Invalid choice"
+    while show_help == "Invalid choice":
         show_help = input("Would you like to read the instructions?: ").lower()
         show_help = string_check(show_help, options)
 
     if show_help == "Yes":
+        print("--------------------------")
+        print("*** Movie fundraiser instructions ***")
         print()
-        print("Movie fundraiser instructions")
-        print()
-        print("Please answer all questions.")
+        print("Please answer all questions. |")
         print("If answer is entered wrong it will give you a error message so you know what to fix")
-        print()
+        print("4 of each snack is the max for each person")
+        print("If you want to to exit choosing snacks or entering name please enter quit")
+        print("--------------------------")
 
     return ""
 
@@ -191,7 +193,7 @@ def instructions(options):
 
 
 # Initialise variables
-MAX_TICKETS = 5
+MAX_TICKETS = 150
 
 name = ""
 ticket_count = 0
@@ -261,7 +263,7 @@ price_dict = {
 instructions(yes_no)
 
 # Loop to get ticket details
-while name != "xxx" and ticket_count < MAX_TICKETS:
+while name != "quit" and ticket_count < MAX_TICKETS:
 
     # check number of tickets has not been exceeded
     check_tickets(ticket_count, MAX_TICKETS)
@@ -269,10 +271,10 @@ while name != "xxx" and ticket_count < MAX_TICKETS:
     # Get ticket details
 
     # Get name can't "be blank
-    name = not_blank("Name: ")
+    name = not_blank("What is your name?: ")
 
     # End loop if exit code entered
-    if name == "xxx":
+    if name == "quit":
         break
 
     # Get ticket price based on age
@@ -292,7 +294,7 @@ while name != "xxx" and ticket_count < MAX_TICKETS:
     # Get snacks
     check_snack = "Invalid choice"
     while check_snack == "Invalid choice":
-        want_snack = input("Do you want snacks? ").lower().strip()
+        want_snack = input("Do you want snacks?: ").lower().strip()
         check_snack = string_check(want_snack, yes_no)
 
     if check_snack == "Yes":
@@ -329,7 +331,7 @@ while name != "xxx" and ticket_count < MAX_TICKETS:
 # End of tickets/snacks/payment loop
 
 # Print details
-print()
+print("--------------------------")
 movie_frame = pandas.DataFrame(movie_data_dict)
 movie_frame = movie_frame.set_index('Name')
 
@@ -396,16 +398,16 @@ movie_frame.to_csv("ticket_details.csv")
 summary_frame.to_csv("snack_summary.csv")
 
 # Ticket/ Snack information
-print()
-print("Ticket/Snack Information")
+print("--------------------------")
+print("$$$ Ticket/Snack Information $$$")
 print("Note: See the Excel sheet called Total Cost")
 print()
 print(movie_frame[['Ticket', 'Snacks', 'Sub Total',
                    'Surcharge', 'Total']])
 
-print()
+print("--------------------------")
 
-print(" Snack/Profit Summary")
+print("$$$ Snack/Profit Summary $$$")
 print(summary_frame)
 
 # Calculate ticket price & profit
